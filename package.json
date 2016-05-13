@@ -1,0 +1,20 @@
+{
+  "name": "mongo-index-reviewer",
+  "version": "0.1.0",
+  "description": "Utility to review mongo db indexes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "debug": "^2.2.0",
+    "fs-readfile-promise": "^2.0.1"
+  },
+  "keywords": [
+    "mongo",
+    "index",
+    "review"
+  ],
+  "author": "martinerko",
+  "license": "MIT"
+}
