@@ -1,0 +1,77 @@
+#!/usr/bin/env node
+
+/*!
+ * mongo-index-reviewer
+ * Copyright(c) 2016 martinerko <martinerko@gmail.com>
+ * MIT Licensed
+ */
+
+/**
+ * Module dependencies.
+ */
+
+var argv = require('minimist')(process.argv.slice(2));
+var help = require('./help');
+var dbProcessor = require("../lib/dbProcessor");
+var sourceProcessor = require("../lib/sourceProcessor");
+var review = require("../lib/reviewer");
+
+if (argv.h || argv.help) {
+  help();
+  process.exit(0);
+}
+
+if (!argv.indexFile) {
+  help();
+  process.exit(1);
+}
+
+
+function processOutput(dbOutstandingIndexes) {
+  Object.keys(dbOutstandingIndexes).forEach(function(col) {
+    var indexes = dbOutstandingIndexes[col];
+    if (indexes.length) {
+      console.log('// %s', col);
+      indexes.map(getDropIndexStatement.bind(null, col)).sort().forEach(function(def) {
+        console.log(def);
+      });
+      console.log('');
+    }
+  });
+}
+
+function getDropIndexStatement(col, keyDef) {
+  var keys = JSON.stringify(keyDef);
+  return 'db.' + col + '.dropIndex(' + keys + ');';
+}
+
+var dbParams = {
+  connectionString: process.argv[2],
+  username: argv.username,
+  password: argv.password
+};
+
+dbProcessor(dbParams, function(err, dbCollectionsIndexes) {
+  if (err) {
+    console.log('%s: %s', err.name, err.message);
+    process.exit(1);
+  } else {
+    sourceProcessor({
+      indexFile: argv.indexFile,
+    }, function(err, sourceCollectionsIndexes) {
+      if (err) {
+        console.log('%s: %s', err.name, err.message);
+        process.exit(1);
+      }
+
+      review(sourceCollectionsIndexes, dbCollectionsIndexes, function(err, dbOutstandingIndexes) {
+        if (err) {
+          console.log('%s: %s', err.name, err.message);
+          process.exit(1);
+        } else {
+          processOutput(dbOutstandingIndexes);
+        }
+      });
+    });
+  }
+});
