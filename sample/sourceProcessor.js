@@ -8,7 +8,7 @@
  * Module dependencies.
  */
 
-var sourceProcessor = require("../lib/sourceProcessor");
+var sourceProcessor = require("..").sourceProcessor;
 var path = require("path");
 
 /**

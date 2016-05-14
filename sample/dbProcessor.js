@@ -8,7 +8,7 @@
  * Module dependencies.
  */
 
-var dbProcessor = require("../lib/dbProcessor");
+var dbProcessor = require("..").dbProcessor;
 var connectionString = "localhost:27017/library";
 
 dbProcessor({

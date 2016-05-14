@@ -9,9 +9,10 @@
  */
 
 var path = require("path");
-var sourceProcessor = require("../lib/sourceProcessor");
-var dbProcessor = require("../lib/dbProcessor");
-var reviewer = require("../lib/reviewer");
+var lib = require("..");
+var sourceProcessor = lib.sourceProcessor;
+var dbProcessor = lib.dbProcessor;
+var reviewer = lib.reviewer;
 
 /**
  * Constants
