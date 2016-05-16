@@ -28,7 +28,7 @@ mongo-index-reviewer localhost:27017/test --indexFile ./reviewedIndexes.js
 Usage with authentication:
 
 ```sh
-mongo-index-reviewer localhost:27017/test --username john --password s3ecr3t --indexFile ./reviewedIndexes.js
+mongo-index-reviewer localhost:27017/test -u john -p s3ecr3t --indexFile ./reviewedIndexes.js
 ```
 
 ```sh
