@@ -31,6 +31,10 @@ Usage with authentication:
 mongo-index-reviewer localhost:27017/test --username john --password s3ecr3t --indexFile ./reviewedIndexes.js
 ```
 
+```sh
+mongo-index-reviewer localhost:27017/test --username superuser --password T0pS3ecr3t --authenticationDatabase admin
+```
+
 ### Output
 
 CLI version outputs dropIndex statements that you can immediately use to cleanup your database indexes:

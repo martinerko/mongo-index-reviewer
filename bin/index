@@ -48,7 +48,8 @@ function getDropIndexStatement(col, keyDef) {
 var dbParams = {
   connectionString: process.argv[2],
   username: argv.username,
-  password: argv.password
+  password: argv.password,
+  authenticationDatabase: argv.authenticationDatabase
 };
 
 dbProcessor(dbParams, function(err, dbCollectionsIndexes) {

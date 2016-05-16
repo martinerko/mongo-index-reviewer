@@ -17,7 +17,7 @@
     "lodash.intersection": "^4.2.0",
     "lodash.isequal": "^4.2.0",
     "minimist": "^1.2.0",
-    "mongo-index-exporter": "^1.0.0"
+    "mongo-index-exporter": "^1.1.0"
   },
   "keywords": [
     "mongo",

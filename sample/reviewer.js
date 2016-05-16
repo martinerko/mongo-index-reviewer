@@ -22,7 +22,10 @@ var FILE = './data/library.txt';
 var connectionString = "localhost:27017/library";
 
 dbProcessor({
-  connectionString: connectionString
+  connectionString: connectionString,
+  //username: 'john'
+  //password: 'T0pS3ecr3tP@ssw0rd',
+  //authenticationDatabase: 'admin'
 }, function(err, dbCollectionsIndexes) {
   if (err) {
     console.log(err);
