@@ -1,6 +1,6 @@
 {
   "name": "mongo-index-reviewer",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Utility to review indexes in your MongoDB database.",
   "repository": "git@github.com:martinerko/mongo-index-reviewer.git",
   "main": "index.js",
